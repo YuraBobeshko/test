@@ -35,6 +35,7 @@
 }
 
 .navList__item > * {
+  position: relative;
   text-decoration: none;
   color: #ccc;
   font-weight: 600;
@@ -255,6 +256,19 @@
 
 .notActive {
   cursor: default;
+}
+
+@media screen and (max-width: 600px) {
+  .navList {
+    flex-direction: column;
+    line-height: 15px;
+    margin-bottom: 50px;
+    align-items: flex-start;
+  }
+
+  .header {
+    padding: 50px 10px 150px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
