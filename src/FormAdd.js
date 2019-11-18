@@ -135,7 +135,7 @@ class FormAdd extends React.Component {
               onChange={event => this.setData(event, "name")}
             />
             <div hidden={name} className={"noValidInput"}>
-              Имя должно содержать только латиницу и быть больше 2 символов и меньше 9
+              Имя должно содержать только кириллицу и быть больше 2 символов и меньше 9
             </div>
             <input
               placeholder={"Фамилия"}
@@ -151,7 +151,7 @@ class FormAdd extends React.Component {
               onChange={event => this.setData(event, "secondName")}
             />
             <div hidden={secondName} className={"noValidInput"}>
-              Фамилия должна содержать только латиницу и быть больше 2 символов и меньше 15
+              Фамилия должна содержать только кириллицу и быть больше 2 символов и меньше 15
             </div>
             <div className={"selectList"}>
               <label>
