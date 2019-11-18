@@ -1,6 +1,5 @@
 
 function validateField (value, data, setValid, getValid) {
-  let formValid = false;
   const valid = getValid;
     switch (data) {
       case "nameValid":

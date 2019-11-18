@@ -115,7 +115,7 @@ class FormAdd extends React.Component {
   }
   
   render() {
-    const {name, secondName, sex, loyalty, card} = this.state.valid;
+    const {name, secondName, sex, card} = this.state.valid;
     
     return (
       <>
