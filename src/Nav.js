@@ -25,7 +25,7 @@ class Nav extends React.Component {
           <nav className={"nav"}>
             <ul className={"navList"}>
               <li className={"navList__item"}>
-                <NavLink to="/" exact>Форма регистрации</NavLink>
+                <NavLink to="/test" exact>Форма регистрации</NavLink>
               </li>
               <li className={"navList__item"}>
                 <NavLink to="/userList">Список клиентов</NavLink>
@@ -37,7 +37,7 @@ class Nav extends React.Component {
           </nav>
         </header>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/test" exact>
             <FormAdd list={this.state.userList} func={this.addUsers} />
           </Route>
           <Route path="/userList">
