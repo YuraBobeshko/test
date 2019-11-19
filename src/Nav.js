@@ -66,7 +66,7 @@ class Nav extends React.Component {
                 <li><a className={"notActive"} href="#">HTML5/CSS3, SASS(SCSS), JavaScript(ES6), React</a></li>
                 <li><a href="https://docs.google.com/document/d/18CiDxH0iUpZMcwsidRFXRsAzjl2zMiRCdZVPw3aZyqY/edit">Резюме</a></li>
                 <li><a href="https://github.com/YuraBobeshko">Профиль github</a></li>
-                <li><a href="https://github.com/YuraBobeshko/test/tree/Yura_test">Репозиторий этой страницы</a></li>
+                <li><a href="https://github.com/YuraBobeshko/test">Репозиторий этой страницы</a></li>
               </ol>
             </section>
           </Route>
