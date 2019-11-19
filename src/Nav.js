@@ -37,7 +37,7 @@ class Nav extends React.Component {
           </nav>
         </header>
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <FormAdd list={this.state.userList} func={this.addUsers} />
           </Route>
           <Route path="/userList">
