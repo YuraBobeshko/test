@@ -1,21 +1,20 @@
 import React from 'react';
 
-import Phrase from './Phrase';
-import validateField from './validateField';
+import validateField from '../validateField/validateField';
 
 class FormAdd extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userList: [],
+      userList: JSON.parse(localStorage.getItem("userList")) || [],
       name: "",
       secondName: "",
       sex: "",
       loyalty: "",
       card: "",
-      phrase: null,
-      id: 0,
+      phrase: "phrase",
+      id: JSON.parse(localStorage.getItem("id")) || 0,
       formValid: false,
       valid: {
         name: "first",
@@ -29,6 +28,12 @@ class FormAdd extends React.Component {
     this.setData = this.setData.bind(this);
     this.createNewUser = this.createNewUser.bind(this);
     this.setValid = this.setValid.bind(this);
+    }
+
+    async componentDidMount() {
+      const respons = await fetch('https://meowfacts.herokuapp.com/');
+      const phrase = await respons.json();
+      this.setState({phrase: phrase.data})
     }
 
   setValid (valid, formValid) {
@@ -89,18 +94,20 @@ class FormAdd extends React.Component {
   }
 
   createNewUser(event) {
+
     let {userList, name, secondName, sex, loyalty, card, id} = this.state;
     const userListMut =  [...userList];
-    console.log(userList)
+    alert(`пользователь ${name} ${secondName} ${id} \nпол:${sex} П.Л. ${loyalty} создан`);
+
     userListMut.push({
-      name: name, 
-      secondName: secondName, 
-      sex: sex, 
+      name: name,
+      secondName: secondName,
+      sex: sex,
       loyalty: loyalty,
-      card: card === "" ? "-" : card, 
-      data: new Date().toLocaleDateString(), 
-      id: id,
-    })
+      card: card === "" ? "-" : card,
+      data: new Date().toLocaleDateString(),
+      id: id
+    });
     this.setState(prevState => ({
       userList: userListMut,
       name: "",
@@ -116,7 +123,17 @@ class FormAdd extends React.Component {
   
   render() {
     const {name, secondName, sex, card} = this.state.valid;
-    
+    const noValidName = "Имя должно содержать только кириллицу и быть больше 2 символов и меньше 9";
+    const noValidSecondName = "Фамилия должна содержать только кириллицу и быть больше 2 символов и меньше 15";
+    const noValidSecondCard = "введите номер карты состоящий из 8 цифр или выберите пункт недоступна";
+
+    if (this.state.userList !== []) {
+      const stateJson = JSON.stringify(this.state.userList);
+      localStorage.setItem("userList", stateJson);
+      const idJson = JSON.stringify(this.state.id);
+      localStorage.setItem("id", idJson)
+    }
+
     return (
       <>
         <section className={"section"}>
@@ -135,7 +152,7 @@ class FormAdd extends React.Component {
               onChange={event => this.setData(event, "name")}
             />
             <div hidden={name} className={"noValidInput"}>
-              Имя должно содержать только кириллицу и быть больше 2 символов и меньше 9
+              {noValidName}
             </div>
             <input
               placeholder={"Фамилия"}
@@ -151,7 +168,7 @@ class FormAdd extends React.Component {
               onChange={event => this.setData(event, "secondName")}
             />
             <div hidden={secondName} className={"noValidInput"}>
-              Фамилия должна содержать только кириллицу и быть больше 2 символов и меньше 15
+              {noValidSecondName}
             </div>
             <div className={"selectList"}>
               <label>
@@ -196,8 +213,7 @@ class FormAdd extends React.Component {
               hidden={this.state.loyalty !== "card"}
             />
             <div hidden={card} className={"noValidInput"}>
-              введите номер карты состоящий из 8 цифр или выберите пункт
-              недоступна
+              {noValidSecondCard}
             </div>
             <button
               className={`button ${
@@ -209,7 +225,7 @@ class FormAdd extends React.Component {
               Сохранить
             </button>
           </form>
-          <Phrase />
+            <p className="phrase">{this.state.phrase}</p>
         </section>
       </>
     );

@@ -183,6 +183,7 @@
   position: relative;
   color: #3D4E61;
   font-style: italic;
+  margin: 0 20px;
 }
 
 .phrase::before {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch, NavLink} from 'react-router-dom';
-import FormAdd from './FormAdd';
-import ShowListUsers from './ShowListUsers';
+import FormAdd from '../FormAdd/FormAdd';
+import ShowListUsers from '../ShowListUsers/ShowListUsers';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class Nav extends React.Component {
           </Route>
           <Route path="/info">
             <section className={"section"}>
-              <ol class="rounded">
+              <ol className="rounded">
                 <li><a className={"notActive"} href="#">Юрий Бобешко</a></li>
                 <li><a className={"notActive"} href="#">HTML5/CSS3, SASS(SCSS), JavaScript(ES6), React</a></li>
                 <li><a href="https://docs.google.com/document/d/18CiDxH0iUpZMcwsidRFXRsAzjl2zMiRCdZVPw3aZyqY/edit">Резюме</a></li>

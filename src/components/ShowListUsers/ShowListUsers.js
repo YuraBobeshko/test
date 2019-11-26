@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ShowListUsers(list) {
-  const userList = list.list;
+  const userList = JSON.parse(localStorage.getItem('userList')) || list.list;
   return userList.map(user => {
     return (
       <tr className={"tbody__tr"} key={user.id}>
